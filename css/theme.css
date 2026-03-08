@@ -1,0 +1,490 @@
+/* Shop0 — Pure Man Kurta Green — Bright white base, dark green accents */
+
+:root {
+  --bg: #f8faf8;
+  --bg-panel: #ffffff;
+  --bg-card: #ffffff;
+  --green-dark: #1a4d1a;
+  --green-primary: #2d6b2d;
+  --green-mid: #3d7a3d;
+  --green-accent: #2d6b2d;
+  --text: #1a1a1a;
+  --text-muted: #4a5a4a;
+  --border: #c8d8c8;
+  --border-light: #e4ebe4;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 12px rgba(45, 107, 45, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Header */
+.site-header {
+  background: var(--bg-panel);
+  border-bottom: 2px solid var(--green-dark);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.site-name {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.cart-trigger {
+  background: var(--green-dark);
+  color: #fff;
+  border: 1px solid var(--green-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-trigger:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+
+.cart-count {
+  background: #fff;
+  color: var(--green-dark);
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Main layout */
+.main {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Filters */
+.filters-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.filters-title {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
+.filter-group {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.filter-group legend {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.filter-group label + label {
+  margin-top: 0.25rem;
+}
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+  margin-right: 0.5rem;
+  accent-color: var(--green-primary);
+}
+
+.filter-group input[type="number"],
+.filter-group select {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.4rem 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.filter-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.recommend-text {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--green-primary);
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid transparent;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--green-dark);
+  color: #fff;
+  border-color: var(--green-primary);
+}
+
+.btn-primary:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--border-light);
+  color: var(--text);
+}
+
+/* Listing */
+.listing-title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.listing-empty {
+  color: var(--text-muted);
+  padding: 2rem;
+  text-align: center;
+}
+
+.listing-empty.hidden {
+  display: none;
+}
+
+/* Product card */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.product-card .card-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 0 15%;
+  display: block;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.product-card .card-image-sepia {
+  filter: sepia(0.45);
+}
+
+.product-card .card-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-card .card-size {
+  font-weight: 700;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+}
+
+.product-card .card-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.product-card .card-price {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.product-card .card-rating {
+  font-size: 0.85rem;
+  color: var(--green-primary);
+}
+
+.product-card .card-recommend {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.product-card .btn-select {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--green-dark);
+  color: #fff;
+  border: 1px solid var(--green-primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.product-card .btn-select:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-card);
+}
+
+.modal h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--green-dark);
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.modal input[type="number"],
+.modal input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-product-name {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal-logo-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-logo-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.modal-actions .btn-primary {
+  flex: 1;
+}
+
+/* Cart modal */
+.cart-items {
+  margin-bottom: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.cart-empty.hidden {
+  display: none;
+}
+
+.cart-item {
+  padding: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.cart-item strong {
+  color: var(--green-dark);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Image lightbox modal — scroll, zoom */
+.image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  z-index: 1100;
+  padding: 0;
+}
+
+.image-modal-overlay.hidden {
+  display: none !important;
+}
+
+.image-modal-toolbar {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.image-modal-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-btn:hover {
+  background: var(--border-light);
+}
+
+.image-modal-close {
+  margin-left: auto;
+  font-size: 1.5rem;
+}
+
+.image-modal-scroll {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 1rem;
+}
+
+.image-modal-img {
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  display: block;
+  transform-origin: center center;
+  user-select: none;
+}

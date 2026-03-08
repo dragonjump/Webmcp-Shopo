@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop0 — Pure Man Kurta Green</title>
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-name">Shop0</h1>
+    <p class="tagline">Pure Man Kurta Green</p>
+    <button type="button" class="cart-trigger" id="cartTrigger" aria-label="Open cart">
+      Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="main">
+    <aside class="filters-panel">
+      <h2 class="filters-title">Filters</h2>
+
+      <fieldset class="filter-group">
+        <legend>Size</legend>
+        <label><input type="checkbox" name="size" value="S"> Small</label>
+        <label><input type="checkbox" name="size" value="M"> Medium</label>
+        <label><input type="checkbox" name="size" value="L"> Large</label>
+        <label><input type="checkbox" name="size" value="XL"> X-Large</label>
+      </fieldset>
+
+      <fieldset class="filter-group">
+        <legend>Logo Style</legend>
+        <label><input type="radio" name="logo" value="" checked> Any</label>
+        <label><input type="radio" name="logo" value="big"> Big logo</label>
+        <label><input type="radio" name="logo" value="small"> Small logo</label>
+      </fieldset>
+
+      <fieldset class="filter-group">
+        <legend>Price (within 10%)</legend>
+        <label>Min (RM) <input type="number" id="priceMin" min="0" step="1" placeholder="Min"></label>
+        <label>Max (RM) <input type="number" id="priceMax" min="0" step="1" placeholder="Max"></label>
+      </fieldset>
+
+      <fieldset class="filter-group">
+        <legend>Body type (fit recommendation)</legend>
+        <select id="bodyType">
+          <option value="">Any</option>
+          <option value="fit">Fit</option>
+          <option value="fat">Fat</option>
+          <option value="chubby">Chubby</option>
+          <option value="large">Large</option>
+          <option value="xl">XL</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="filter-group">
+        <legend>Height &amp; Weight (recommend size)</legend>
+        <label>Height (cm) <input type="number" id="heightCm" min="140" max="220" placeholder="e.g. 170"></label>
+        <label>Weight (kg) <input type="number" id="weightKg" min="40" max="150" placeholder="e.g. 65"></label>
+        <button type="button" class="btn-secondary" id="recommendSize">Recommend size</button>
+        <p class="recommend-text" id="recommendText"></p>
+      </fieldset>
+
+      <fieldset class="filter-group">
+        <legend>Rating</legend>
+        <select id="minRating">
+          <option value="0">Any</option>
+          <option value="3">3+ stars</option>
+          <option value="4">4+ stars</option>
+          <option value="5">5 stars only</option>
+        </select>
+      </fieldset>
+
+      <button type="button" class="btn-primary" id="applyFilters">Apply</button>
+      <button type="button" class="btn-secondary" id="clearFilters">Clear</button>
+    </aside>
+
+    <section class="listing">
+      <h2 class="listing-title">Pure Man Kurta — Green</h2>
+      <div class="listing-grid" id="listingGrid"></div>
+      <p class="listing-empty hidden" id="listingEmpty">No items match your filters.</p>
+    </section>
+  </main>
+
+  <div class="modal-overlay hidden" id="addToCartModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Add to cart</h2>
+      <form id="addToCartForm">
+        <input type="hidden" id="modalProductId" name="productId">
+        <p class="modal-product-name" id="modalProductName"></p>
+        <label>Size <strong id="modalSize"></strong></label>
+        <label>Logo style</label>
+        <div class="modal-logo-options">
+          <label><input type="radio" name="modalLogo" value="big" checked> Big logo</label>
+          <label><input type="radio" name="modalLogo" value="small"> Small logo</label>
+        </div>
+        <label for="modalQty">Quantity</label>
+        <input type="number" id="modalQty" name="qty" min="1" value="1">
+        <label for="modalNote">Note (optional)</label>
+        <input type="text" id="modalNote" name="note" placeholder="e.g. gift wrap">
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Add to cart</button>
+          <button type="button" class="btn-secondary" id="modalClose">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="cartModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="cartModalTitle">
+      <h2 id="cartModalTitle">Your cart</h2>
+      <div class="cart-items" id="cartItems"></div>
+      <p class="cart-empty hidden" id="cartEmpty">Cart is empty.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="cartReset">Reset cart</button>
+        <button type="button" class="btn-secondary" id="cartModalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-modal-overlay hidden" id="imageModal" aria-hidden="true" role="dialog" aria-label="Image zoom">
+    <div class="image-modal-toolbar">
+      <button type="button" class="image-modal-btn" id="imageModalZoomIn" title="Zoom in">+</button>
+      <button type="button" class="image-modal-btn" id="imageModalZoomOut" title="Zoom out">−</button>
+      <button type="button" class="image-modal-btn" id="imageModalZoomReset" title="Reset zoom">1:1</button>
+      <button type="button" class="image-modal-btn image-modal-close" id="imageModalClose" title="Close">×</button>
+    </div>
+    <div class="image-modal-scroll" id="imageModalScroll">
+      <img class="image-modal-img" id="imageModalImg" src="" alt="" draggable="false">
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
